@@ -46,6 +46,15 @@ int main()
     population.push_back(emp::NewPtr<Ladybug>(3, 5));
     std::cout << population[2]->GetType() << std::endl;
     std::cout << population[2]->GetAge() << std::endl;
-    std::cout << population[2].DynamicCast<Ladybug>()->GetBugSpots() << std::endl;
+    std::cout << population[2].DynamicCast<Ladybug>()->GetSpots() << std::endl;
+
+    // Now, let’s add a method to Ladybug that takes in a pointer to a Dog and returns a Dog with the same age but with the number of spots of the ladybug added onto its number of spots. In Ladybug.h, define a LandOn function that takes in a pointer to a Dog and return a Dog with the same age but with the number of spots of the ladybug added onto its number of spots:
+    emp::Ptr<Animal> dog = population[0].DynamicCast<Dog>();
+    emp::Ptr<Animal> ladybug = population[2].DynamicCast<Ladybug>();
+    emp::Ptr<Animal> new_dog = ladybug.DynamicCast<Ladybug>()->LandOn(dog);
+    std::cout << new_dog->GetType() << std::endl;
+    std::cout << new_dog->GetAge() << std::endl;
+    std::cout << new_dog.DynamicCast<Dog>()->GetSpots() << std::endl;
+    
 
 }
